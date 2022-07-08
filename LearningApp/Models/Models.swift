@@ -42,6 +42,7 @@ struct Test: Decodable, Identifiable {
     var image:String
     var description:String
     var questions:[Question]
+    var time:String
     
 }
 
