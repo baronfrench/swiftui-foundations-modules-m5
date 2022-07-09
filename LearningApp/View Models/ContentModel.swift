@@ -20,6 +20,10 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
+    // Current Lesson Explaination
+    @Published var lessonDescription = NSAttributedString()
+
+    
     var styleData: Data?
     
     init() {
@@ -96,6 +100,9 @@ class ContentModel: ObservableObject {
         
         // Set current module
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
+        
+        // set explaination
+        lessonDescription = addStyling(currentLesson!.explanation)
     }
     
     func hasNextLesson() ->  Bool {
@@ -109,11 +116,37 @@ class ContentModel: ObservableObject {
         // check in range
         if currentLessonIndex < currentModule!.content.lessons.count {
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
+            lessonDescription = addStyling(currentLesson!.explanation)
         }
         else {
             currentLessonIndex = 0
             currentLesson = nil
         }
+    }
+    
+    // MARK: - Code Styling
+    private func addStyling(_ htmlString:String) -> NSAttributedString {
+        var resultString = NSAttributedString()
+        var data = Data()
+        
+        // add styling data
+        if(styleData != nil) {
+            data.append(self.styleData!)
+        }
+        
+        // add html
+        data.append(Data(htmlString.utf8))
+        
+        // convert to attributed string
+        // assinging to constant and using ? means it runs code with {} if success only, else nothing happens
+        // this instead of do...catch
+        if let attributedString = try? NSAttributedString(data: data,
+                                                         options: [.documentType:NSAttributedString.DocumentType.html],
+                                                         documentAttributes: nil) {
+            resultString = attributedString
+        }
+        
+        return resultString
     }
     
 

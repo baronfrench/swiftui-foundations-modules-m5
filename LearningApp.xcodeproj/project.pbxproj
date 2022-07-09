@@ -21,6 +21,8 @@
 		925C91BF287A27FC0090A61B /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C91BE287A27FC0090A61B /* ContentDetailView.swift */; };
 		925C91C2287A2AA30090A61B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925C91C1287A2AA30090A61B /* AVKit.framework */; };
 		925C91C4287A2BCC0090A61B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C91C3287A2BCC0090A61B /* Constants.swift */; };
+		925C91C6287A32BD0090A61B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925C91C5287A32BD0090A61B /* UIKit.framework */; };
+		925C91C8287A35490090A61B /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C91C7287A35490090A61B /* CodeTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		925C91BE287A27FC0090A61B /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		925C91C1287A2AA30090A61B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		925C91C3287A2BCC0090A61B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		925C91C5287A32BD0090A61B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		925C91C7287A35490090A61B /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				925C91C2287A2AA30090A61B /* AVKit.framework in Frameworks */,
+				925C91C6287A32BD0090A61B /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +106,7 @@
 				925C91BA287A202F0090A61B /* ContentView.swift */,
 				925C91BC287A26400090A61B /* ContentViewBox.swift */,
 				925C91BE287A27FC0090A61B /* ContentDetailView.swift */,
+				925C91C7287A35490090A61B /* CodeTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 		925C91C0287A2AA30090A61B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				925C91C5287A32BD0090A61B /* UIKit.framework */,
 				925C91C1287A2AA30090A61B /* AVKit.framework */,
 			);
 			name = Frameworks;
@@ -224,6 +231,7 @@
 				925C91BF287A27FC0090A61B /* ContentDetailView.swift in Sources */,
 				925C91BB287A202F0090A61B /* ContentView.swift in Sources */,
 				925C917C2878D01C0090A61B /* LearningApp.swift in Sources */,
+				925C91C8287A35490090A61B /* CodeTextView.swift in Sources */,
 				925C918F2878D0D10090A61B /* ContentModel.swift in Sources */,
 				925C91992878E71D0090A61B /* HomeViewBox.swift in Sources */,
 				925C91C4287A2BCC0090A61B /* Constants.swift in Sources */,

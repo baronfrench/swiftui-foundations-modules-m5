@@ -24,7 +24,7 @@ struct ContentDetailView: View {
             }
             
             // Decription
-            
+            CodeTextView()
             
             // Next lesson button
             if model.hasNextLesson() {
@@ -38,6 +38,9 @@ struct ContentDetailView: View {
                             .cornerRadius(10)
                             .shadow(radius:5)
                             .frame(height:48)
+                        
+                        // because we are displaying styled html, we must use UIKit UITextView
+                        
                         Text("Next Lesson: \(model.currentModule!.content.lessons[model.currentLessonIndex + 1].title)")
                             .bold()
                             .foregroundColor(.white)
@@ -47,6 +50,7 @@ struct ContentDetailView: View {
             
         }
         .padding()
+        .navigationTitle(lesson?.title ?? "")
     }
 }
 
