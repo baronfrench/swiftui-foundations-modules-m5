@@ -26,11 +26,22 @@ struct HomeView: View {
                         ForEach(model.modules) { module in
                             
                             VStack(spacing:20) {
-                                HomeViewBox(image: module.content.image,
-                                            title: "Learn \(module.category)",
-                                            description: module.content.description,
-                                            count: "\(module.content.lessons.count) Lessons",
-                                            time: module.content.time)
+                                
+                                NavigationLink(
+                                    destination: ContentView()
+                                        .onAppear(perform:{
+                                            model.beginModule(module.id)
+                                        }),
+                                    label: {
+                                
+                                        HomeViewBox(image: module.content.image,
+                                                    title: "Learn \(module.category)",
+                                                    description: module.content.description,
+                                                    count: "\(module.content.lessons.count) Lessons",
+                                                    time: module.content.time)
+                                   
+                                   })
+                                               
                                 HomeViewBox(image: module.test.image,
                                             title: "\(module.category) Test",
                                             description: module.test.description,
@@ -41,6 +52,7 @@ struct HomeView: View {
 
                         
                     }
+                    .accentColor(.black)
                     .padding()
                     
                 }
