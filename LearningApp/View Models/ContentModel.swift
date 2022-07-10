@@ -94,6 +94,7 @@ class ContentModel: ObservableObject {
         
     }
     
+    // MARK: - Lesson funcs
     func beginLesson(_ lessonIndex:Int) {
         
         // Check lesson index in range of module lessons
@@ -130,6 +131,7 @@ class ContentModel: ObservableObject {
         return currentLessonIndex + 1 < currentModule!.content.lessons.count
     }
     
+    // MARK: - Test funcs
     func beginTest(_ moduleId:Int) {
         beginModule(moduleId)
         
@@ -141,6 +143,22 @@ class ContentModel: ObservableObject {
             // Set the question content
             codeText = addStyling(currentQuestion!.content)
         }
+    }
+    
+    func nextQuestion() {
+        // advance index
+        currentQuestionIndex += 1
+        
+        // check in range && set
+        if currentQuestionIndex < currentModule!.test.questions.count {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            codeText = addStyling(currentQuestion!.content)
+        }
+        else {
+            currentQuestionIndex = 0
+            currentQuestion = nil
+        }
+        
     }
     
     // MARK: - Code Styling

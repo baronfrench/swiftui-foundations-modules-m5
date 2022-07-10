@@ -26,6 +26,7 @@ struct TestView: View {
                 // Question
                 CodeTextView()
                     .padding(.horizontal, 20)
+                    .frame(height:150)
                 
                 // Answers
                 ScrollView {
@@ -63,7 +64,7 @@ struct TestView: View {
                                         Text(model.currentQuestion!.answers[index])
                                         
                                     }
-                                    .padding(5)
+                                    .padding(10)
                                 })
                             .disabled(submitted)
                         }
@@ -73,21 +74,34 @@ struct TestView: View {
                 // Button
                 Button(
                     action:{
-                        // check the answer, and increemtn countrer if ocffect
-                        if selectedAnswerIndex == model.currentQuestion!.correctIndex {
-                            numCorrect += 1
+                        
+                        // check if submitted
+                        if submitted == true {
+                            // go to next question
+                            model.nextQuestion()
+                            // rest local prorties
+                            submitted = false
+                            selectedAnswerIndex = nil
                         }
-                        submitted = true
+                        else {
+                            // submit answer
+                            // check the answer, and increemtn countrer if ocffect
+                            if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                                numCorrect += 1
+                            }
+                            submitted = true
+                            
+                        }
                     },
                     label: {
                         ZStack {
                             RectangleCard(height:48, colour:.green)
-                            Text("Submit")
+                            Text(buttonText)
                                 .foregroundColor(.white)
                                 .bold()
                             
                         }
-                        .padding(5)
+                        .padding(10)
                     })
                 .disabled(selectedAnswerIndex == nil)
                 
@@ -100,6 +114,24 @@ struct TestView: View {
             ProgressView() // this is the spinning circle
         }
     }
+    
+    var buttonText:String {
+        // check if submiitted
+        if submitted {
+            
+            // last question - Finish, else Next
+            if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                return "Finish"
+            }
+            else {
+                return "Next Question"
+            }
+        }
+        else {
+            return "Submit"
+        }
+    }
+    
 }
 
 struct TestView_Previews: PreviewProvider {
