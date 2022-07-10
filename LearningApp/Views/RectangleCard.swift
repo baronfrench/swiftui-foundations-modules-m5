@@ -14,13 +14,13 @@ struct RectangleCard: View {
         Rectangle()
             .foregroundColor(colour)
             .cornerRadius(10)
-            .shadow(radius:5)
+            .shadow(radius: 5)
             .frame(height:height)
     }
 }
 
 struct RectangleCard_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleCard(height:48, colour: .green)
+        RectangleCard()
     }
 }
