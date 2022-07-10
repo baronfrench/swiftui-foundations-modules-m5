@@ -33,19 +33,31 @@ struct ContentDetailView: View {
                 }, label : {
                     
                     ZStack {
-                        Rectangle()
-                            .foregroundColor(.green)
-                            .cornerRadius(10)
-                            .shadow(radius:5)
-                            .frame(height:48)
-                        
-                        // because we are displaying styled html, we must use UIKit UITextView
+                        RectangleCard(height:48, colour: .green)
                         
                         Text("Next Lesson: \(model.currentModule!.content.lessons[model.currentLessonIndex + 1].title)")
                             .bold()
                             .foregroundColor(.white)
                     }
                 })
+            }
+            else {
+                // show complete button
+                Button(action: {
+                    model.currentContentSelected = nil // return to home view
+                }, label : {
+                    
+                    ZStack {
+                        RectangleCard(height:48, colour: .green)
+                        
+                        // because we are displaying styled html, we must use UIKit UITextView
+                        
+                        Text("Complete")
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                })
+
             }
             
         }

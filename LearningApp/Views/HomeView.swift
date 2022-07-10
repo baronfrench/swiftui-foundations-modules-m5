@@ -28,19 +28,18 @@ struct HomeView: View {
                             VStack(spacing:20) {
                                 
                                 NavigationLink(
-                                    destination: ContentView()
-                                        .onAppear(perform:{
-                                            model.beginModule(module.id)
-                                        }),
+                                    destination: ContentView().onAppear(perform:{model.beginModule(module.id)}),
+                                    tag: module.id,
+                                    selection: $model.currentContentSelected,
                                     label: {
-                                
-                                        HomeViewBox(image: module.content.image,
-                                                    title: "Learn \(module.category)",
+                                           
+                                           HomeViewBox(image: module.content.image,
+                                                       title: "Learn \(module.category)",
                                                     description: module.content.description,
-                                                    count: "\(module.content.lessons.count) Lessons",
-                                                    time: module.content.time)
-                                   
-                                   })
+                                                       count: "\(module.content.lessons.count) Lessons",
+                                                       time: module.content.time)
+                                      
+                                      })
                                                
                                 HomeViewBox(image: module.test.image,
                                             title: "\(module.category) Test",
