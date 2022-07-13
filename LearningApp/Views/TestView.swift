@@ -110,8 +110,7 @@ struct TestView: View {
             
         }
         else {
-            // Test hasn't loaded yet
-            ProgressView() // this is the spinning circle
+            TestResultView(numCorrect: numCorrect)
         }
     }
     
