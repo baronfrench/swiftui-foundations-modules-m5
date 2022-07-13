@@ -34,7 +34,8 @@ class ContentModel: ObservableObject {
     
     init() {
         
-        getLocalData()
+        getLocalData() // parses local data
+        getRemoteData() // gets data from github and parses
         
     }
     
@@ -77,6 +78,42 @@ class ContentModel: ObservableObject {
         
     }
 
+    func getRemoteData() {
+        
+        let urlString = "https://baronfrench.github.io/learningapp-data/data2.json"
+        let url = URL(string:urlString)
+        
+        guard url != nil else {
+            return
+        }
+        
+        let request = URLRequest(url: url!)
+        
+        // get session and start task
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            guard error == nil else {
+                    // there was an error
+                return
+            }
+            
+            // Try to decode the json into an array of modules
+            do {
+                let jsonDecoder = JSONDecoder()
+                let modules = try jsonDecoder.decode([Module].self, from: data!)
+                self.modules += modules
+            }
+            catch {
+                print("error - parsing remote json")
+            }
+            
+        })
+        
+        // start data task
+        dataTask.resume()
+        
+    }
+    
     //  MARK: - Module navigation methods
     func beginModule(_ moduleid:Int) {
         
